@@ -30,7 +30,7 @@ import java.util.List;
  * Output: [true,false,true]
  */
 
-public class arrays {
+public class KidsWithTheGratestNumberOfCandies {
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
         int maxNumber = 0; //initialize smallest possible int
         List<Boolean> res = new ArrayList<>();
