@@ -23,6 +23,7 @@ package org.coding.practice.questions.strings;
  */
 public class ValidPalindrome {
     public boolean isPalindrome(String s) {
+        // ^ is for negating.
         String converted = s.toLowerCase().replaceAll("[^a-zA-Z0-9]", "");
         System.out.println(converted);
 
