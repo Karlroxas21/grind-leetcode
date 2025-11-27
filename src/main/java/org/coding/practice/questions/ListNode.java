@@ -6,7 +6,7 @@ public class ListNode {
 
     // Reference to the next code in the list.
     // If this is the last node, 'next' will be null.
-    ListNode next;
+    public ListNode next;
 
     // Constructor to create a new node with data
     public ListNode(int data) {
