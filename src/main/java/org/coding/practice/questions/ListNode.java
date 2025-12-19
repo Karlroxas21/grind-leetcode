@@ -32,14 +32,16 @@ class MyLinkedList {
 
     /**
      * Checks if the linked list is empty.
+     *
      * @return true if the list has no nodes, false otherwise.
      */
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return head == null;
     }
 
     /**
      * Returns the number of element in the linked list.
+     *
      * @return The current size of the list.
      */
     public int size() {
@@ -51,6 +53,7 @@ class MyLinkedList {
     /**
      * Adds a new node with the given data to the end of the list.
      * O(1) time complexity if 'tail' ins maintained.
+     *
      * @param data the data to add.
      */
     public void add(int data) {
@@ -68,6 +71,7 @@ class MyLinkedList {
     /**
      * Adds a new node with the given data to the beginning of the list.
      * O(1) time complexity.
+     *
      * @param data the data to add.
      */
     public void addFirst(int data) {
@@ -85,8 +89,9 @@ class MyLinkedList {
     /**
      * Inserts a new node with the given data at a specific index.
      * O(N) time complexity in the worst case (inserting in the middle or end)
+     *
      * @param index the index at which to insert the new node (0-based)>
-     * @param data the data to insert.
+     * @param data  the data to insert.
      * @throws IndexOutOfBoundsException if the index is invalid.
      */
     public void addAt(int index, int data) {
@@ -95,12 +100,12 @@ class MyLinkedList {
         }
         if (index == 0) {
             addFirst(data);
-        }else if (index == size) {
+        } else if (index == size) {
             add(data);
         } else {
             ListNode newNode = new ListNode(data);
             ListNode current = head;
-            for(int i = 0; i < index - 1; i++) {
+            for (int i = 0; i < index - 1; i++) {
                 current = current.next; // Travers to the node *before* the insertion point
             }
             newNode.next = current.next; // New node points to the node that was at 'index'
@@ -114,16 +119,17 @@ class MyLinkedList {
     /**
      * Returns the data of the node at the specified index.
      * O(N) time complexity in the worst case.
+     *
      * @param index The index of the node to retrieve (0-based).
      * @return The data at the specific index.
      * @throws IndexOutOfBoundsException if the index is invalid
      */
-    public int get (int index) {
+    public int get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
         ListNode current = head;
-        for(int i = 0; i < index; i++) {
+        for (int i = 0; i < index; i++) {
             current = current.next; // Traverse to the desired node
         }
         return current.data;
@@ -132,10 +138,11 @@ class MyLinkedList {
     /**
      * Returns the data of the first node in the list.
      * O(1) time complexity.
+     *
      * @return The data of the first node.
      * @throws IllegalStateException if the list is empty.
      */
-    public int getFirst(){
+    public int getFirst() {
         if (isEmpty()) {
             throw new IllegalStateException("List is empty");
         }
@@ -145,12 +152,13 @@ class MyLinkedList {
     /**
      * Returns the data of the last node in the list.
      * O(1) time complexity if 'tail' is maintained. O(N) otherwise.
+     *
      * @return The data of the last node.
      * @throws IllegalStateException if the list is empty.
      */
     public int getLast() {
         if (isEmpty()) {
-           throw new IllegalStateException("List is empty.");
+            throw new IllegalStateException("List is empty.");
         }
         return tail.data;
     }
@@ -160,6 +168,7 @@ class MyLinkedList {
     /**
      * Removes the first node from the list.
      * O(1) time complexity.
+     *
      * @return The data of the removed node.
      * @throws IllegalStateException if the list is empty.
      */
@@ -180,6 +189,7 @@ class MyLinkedList {
     /**
      * Removes the last node from the list.
      * O(N) time complexity (requires traversing to the second-to-last node).
+     *
      * @return The data of the removed node.
      * @throws IllegalStateException if the list is empty.
      */
@@ -197,7 +207,7 @@ class MyLinkedList {
 
         ListNode current = head;
         // Traverse to the second-to-last node
-        while(current.next != tail) {
+        while (current.next != tail) {
             current = current.next;
         }
         int removedData = tail.data;
@@ -210,12 +220,13 @@ class MyLinkedList {
     /**
      * Removes the node at the specified index.
      * O(N) time complexity.
+     *
      * @param index The index of the node to remove (0-based).
      * @return The data of the removed node.
      * @throws IndexOutOfBoundsException if the index is invalid.
      */
     public int removeAt(int index) {
-        if(index > size - 1) {
+        if (index > size - 1) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
 
@@ -229,7 +240,7 @@ class MyLinkedList {
 
         ListNode current = head;
         // Traverse to the node *before* the node to be removed
-        for (int i = 0; i < index -1; i++) {
+        for (int i = 0; i < index - 1; i++) {
             current = current.next;
         }
         int removedData = current.next.data; // Data of the node to be removed
@@ -240,11 +251,45 @@ class MyLinkedList {
     }
 
 
-
     /**
-     * Removes the first occurence of a node with the given data.
+     * Removes the first occurrence of a node with the given data.
      * O(N) time complexity.
+     *
      * @param data The data to remove.
      * @return true if the data was found and removed, false otherwise.
+     */
+    public boolean removeFirstOccurrence(int data) {
+        if (isEmpty()) return false;
+
+        // Case 1: The head contains the data
+        if (head.data == data) {
+            head = head.next;
+            if (head == null) { // List had only one element
+                tail = null;
+            }
+            size--;
+            return true;
+        }
+
+        ListNode current = head;
+        while (current.next != null) {
+            if (current.next.data == data) {
+                // if we're removing the tail, update the tail pointer.
+                if (current.next == tail) {
+                    tail = current;
+                }
+                current.next = current.next.next;
+                size--;
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    // Traversing LinkedList
+
+    /**
+     * Convert Array to LinkedList
      */
 }
