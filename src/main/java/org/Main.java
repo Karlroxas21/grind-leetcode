@@ -1,11 +1,12 @@
 package org;
 
 import org.coding.practice.questions.strings.BackspaceStringCompare;
+import org.coding.practice.questions.strings.ExcelSheetColumnTitle;
 
 public class Main {
     public static void main(String[] args) {
-        BackspaceStringCompare backspaceStringCompare = new BackspaceStringCompare();
+        ExcelSheetColumnTitle excelSheetColumnTitle = new ExcelSheetColumnTitle();
 
-        System.out.println(backspaceStringCompare.backspaceCompare("ab#c", "ad#c"));
+        System.out.println(excelSheetColumnTitle.convertToTitle(28));
     }
 }
