@@ -3,11 +3,12 @@ package org;
 import org.coding.practice.questions.strings.BackspaceStringCompare;
 import org.coding.practice.questions.strings.ExcelSheetColumnNumber;
 import org.coding.practice.questions.strings.ExcelSheetColumnTitle;
+import org.coding.practice.questions.strings.PalindromeNumber;
 
 public class Main {
     public static void main(String[] args) {
-        ExcelSheetColumnNumber excelSheetColumnNumber = new ExcelSheetColumnNumber();
+        PalindromeNumber palindromeNumber = new PalindromeNumber();
 
-        System.out.println(excelSheetColumnNumber.titleToNumber("A"));
+        palindromeNumber.isPalindrome(-121);
     }
 }
