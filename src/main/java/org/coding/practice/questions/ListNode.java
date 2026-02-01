@@ -2,7 +2,7 @@ package org.coding.practice.questions;
 
 public class ListNode {
     // Data stored in this node
-    int data;
+    public int data;
 
     // Reference to the next code in the list.
     // If this is the last node, 'next' will be null.
@@ -13,6 +13,8 @@ public class ListNode {
         this.data = data;
         this.next = null; // Initially, a new node doesn't point to anything.
     }
+
+    public ListNode(){}
 
 }
 
