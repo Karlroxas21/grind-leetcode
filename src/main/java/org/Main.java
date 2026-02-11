@@ -1,14 +1,14 @@
 package org;
 
-import org.coding.practice.questions.strings.BackspaceStringCompare;
-import org.coding.practice.questions.strings.ExcelSheetColumnNumber;
-import org.coding.practice.questions.strings.ExcelSheetColumnTitle;
-import org.coding.practice.questions.strings.PalindromeNumber;
+import org.dsa.Arrays.BubbleSort.BubbleSort;
+
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        PalindromeNumber palindromeNumber = new PalindromeNumber();
+        int[] unsorted = {7, 12, 9, 11, 3};
+        BubbleSort bubbleSort = new BubbleSort(unsorted);
 
-        palindromeNumber.isPalindrome(-121);
+        System.out.println(Arrays.toString(bubbleSort.sort()));
     }
 }
